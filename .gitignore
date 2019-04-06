@@ -1,0 +1,14 @@
+.DS_Store
+.bak
+.idea
+.idea/*
+.project
+.classpath
+.settings
+.settings/*
+*.iml
+target
+target/*
+!.gitignore
+bin/*
+bin
