@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0554e65b-e466-499a-8fbd-f3dc8f193af6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/test/Test.java" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/test/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/sqlmap/UserMapper.xml" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/sqlmap/UserMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/db.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/po/DeveloperModel.java" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/po/DeveloperModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/SqlMapConfig.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />

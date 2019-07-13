@@ -4,12 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <!--1.配置属性-->
+    <properties resource="db.properties">
+        <!--<property name="password" value="123"/>-->
+    </properties>
+    <!--2.全局配置参数-->
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!--是否启用缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--是否启动懒加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
 
+    <!--3.配置别名的几种方式 -->
     <typeAliases>
-        <typeAlias type="top.shixinzhang.mybatis.po.DeveloperModel" alias="Developer"/>
+        <!--a.具体指定某个类的别名-->
+        <!--<typeAlias type="top.shixinzhang.mybatis.po.DeveloperModel" alias="Developer"/>-->
+        <!--b.该文件夹下，使用 @Alias 为具体类设置别名-->
+        <package name="top.shixinzhang.mybatis.po"/>
     </typeAliases>
 
     <!--和 Spring 整合后 environments 配置将被废除-->
@@ -19,10 +32,10 @@
             <transactionManager type="JDBC"/>
             <!--数据库连接池-->
             <dataSource type="POOLED">
-                <property name="driver" value="org.gjt.mm.mysql.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/helloworld?characterEncoding=utf-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
 
         </environment>

@@ -1,8 +1,11 @@
 package top.shixinzhang.mybatis.po;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * Created by zhangshixin on 19/4/6.
  */
+@Alias("Developer")
 public class DeveloperModel {
     private int id;
     private String name;
