@@ -12,3 +12,5 @@ target/*
 !.gitignore
 bin/*
 bin
+*/.idea/*
+*.workspace.xml
