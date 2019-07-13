@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0554e65b-e466-499a-8fbd-f3dc8f193af6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/db/DataConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/po/DeveloperModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/test/Test.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/SqlMapConfig.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/log4j.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/sqlmap/UserMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ssm/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/top/shixinzhang/helloworld/db/DBHelper.java" afterPath="$PROJECT_DIR$/src/main/java/top/shixinzhang/helloworld/db/DBHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/test/Test.java" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/java/top.shixinzhang.mybatis/test/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/sqlmap/UserMapper.xml" afterPath="$PROJECT_DIR$/../MyBatisTest/src/main/resources/sqlmap/UserMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -913,16 +905,16 @@
       <workItem from="1562801194486" duration="355000" />
       <workItem from="1562801930821" duration="1306000" />
       <workItem from="1562995524053" duration="418000" />
-      <workItem from="1563012094147" duration="956000" />
+      <workItem from="1563012094147" duration="1212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16276000" />
+    <option name="totallyTimeSpent" value="16532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />

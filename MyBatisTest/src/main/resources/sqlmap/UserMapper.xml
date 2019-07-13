@@ -3,7 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test">
+
     <select id="findUserById" parameterType="int" resultType="Developer">
         SELECT * FROM DEVELOPER WHERE id=#{id}
     </select>
+
+    <!--模糊查询使用关键字 LIKE 再加上 '%${value}%'-->
+    <select id="findUserByUserName" parameterType="java.lang.String" resultType="Developer">
+        SELECT * FROM DEVELOPER WHERE name LIKE '%${value}%'
+    </select>
+
+    <!--selectKey 用于获取新插入数据的id-->
+    <!--在 insert 标签里添加 useGeneratedKeys 和 keyProperty 属性也可以实现获取新插入 id-->
+    <insert id="insertUser" parameterType="Developer" useGeneratedKeys="true" keyProperty="id">
+        <!--<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">-->
+            <!--SELECT LAST_INSERT_ID()-->
+        <!--</selectKey>-->
+        INSERT INTO DEVELOPER(name, avatar, site)
+          VALUE (#{name}, #{avatar}, #{site})
+    </insert>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM DEVELOPER WHERE id=#{id}
+    </delete>
+
+    <update id="updateUserName" parameterType="Developer">
+        UPDATE DEVELOPER set NAME=#{name} WHERE id=#{id}
+    </update>
 </mapper>
