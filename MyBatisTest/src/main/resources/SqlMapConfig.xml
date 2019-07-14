@@ -25,6 +25,11 @@
         <package name="top.shixinzhang.mybatis.po"/>
     </typeAliases>
 
+    <!--4.类型转换-->
+    <typeHandlers>
+        <typeHandler handler="top.shixinzhang.mybatis.typehandler.DateTypeHandler"
+                     javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </typeHandlers>
     <!--和 Spring 整合后 environments 配置将被废除-->
     <environments default="development">
         <environment id="development">

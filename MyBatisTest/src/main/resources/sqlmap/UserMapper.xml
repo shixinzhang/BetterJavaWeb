@@ -30,4 +30,11 @@
     <update id="updateUserName" parameterType="Developer">
         UPDATE DEVELOPER set NAME=#{name} WHERE id=#{id}
     </update>
+
+    <!--测试类型转换器-->
+    <insert id="insertUserWidthTypeHandler">
+        INSERT INTO DEVELOPER(name, avatar, site, registerTime)
+          VALUES (#{name}, #{avatar}, #{site}, #{registerTime, javaType=date, jdbcType=TIMESTAMP,
+            typeHandler=top.shixinzhang.mybatis.typehandler.DateTypeHandler})
+    </insert>
 </mapper>

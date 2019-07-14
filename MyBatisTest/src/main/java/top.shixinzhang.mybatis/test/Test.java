@@ -5,6 +5,8 @@ import top.shixinzhang.mybatis.db.DataConnection;
 import top.shixinzhang.mybatis.po.DeveloperModel;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -18,11 +20,11 @@ public class Test {
 
 //        testFuzzySearch();
 
-//        testInsert();
+        testInsert();
 
 //        testDelete();
 
-        testUpdate();
+//        testUpdate();
     }
 
     private static void testUpdate() {
@@ -60,13 +62,19 @@ public class Test {
             model.setSite("https://blog.csdn.net/u011240877");
             model.setAvatar("https://avatar.csdn.net/2/E/3/3_u011240877.jpg");
 
-            sqlSession.insert("test.insertUser", model);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            model.setRegisterTime(dateFormat.parse("2019-07-14"));
+
+//            sqlSession.insert("test.insertUser", model);
+            sqlSession.insert("test.insertUserWidthTypeHandler", model);
 
             sqlSession.commit();
 
             System.out.println("id:" + model.getId());
             sqlSession.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
