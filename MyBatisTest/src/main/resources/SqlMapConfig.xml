@@ -25,17 +25,32 @@
         <package name="top.shixinzhang.mybatis.po"/>
     </typeAliases>
 
-    <!--4.类型转换-->
+    <!--4.类型转换，输入参数到 db，db 到输出参数-->
     <typeHandlers>
         <typeHandler handler="top.shixinzhang.mybatis.typehandler.DateTypeHandler"
                      javaType="java.util.Date" jdbcType="TIMESTAMP"/>
     </typeHandlers>
+
+    <!--5.对象工厂，创建对象之前调用-->
+    <objectFactory type="top.shixinzhang.mybatis.objectfactory.MyObjectFactory">
+        <property name="email" value="zsx@163.com"/>
+    </objectFactory>
+
+    <!--6.拦截 MyBatis 核心类的方法执行-->
+    <plugins>
+        <plugin interceptor="top.shixinzhang.mybatis.plugin.QueryPlugin">
+            <property name="max" value="100"/>
+        </plugin>
+    </plugins>
+
+    <!--7.有关数据库连接的数据-->
     <!--和 Spring 整合后 environments 配置将被废除-->
     <environments default="development">
+        <!--可以配置多个数据库连接环境，每个环境包括 事务管理器 和 数据源-->
         <environment id="development">
             <!--使用 JDBC 事务管理-->
             <transactionManager type="JDBC"/>
-            <!--数据库连接池-->
+            <!--数据库连接池，POOLED  使用池来合理控制数据库的链接、关闭次数-->
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
@@ -46,8 +61,14 @@
         </environment>
     </environments>
 
+    <!--8.配置需要加载的 SQL 映射配置文件-->
     <mappers>
+        <!--相对路径-->
         <mapper resource="sqlmap/UserMapper.xml"/>
+        <!--绝对路径-->
+        <mapper url="file:///Users/zhangshixin/Documents/grow/backend/projects/MyBatisTest/src/main/resources/sqlmap/UserMapper.xml"/>
+        <!--使用接口信息进行配置-->
+        <mapper class=""/>
     </mappers>
 
 </configuration>

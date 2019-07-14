@@ -2,11 +2,14 @@ package top.shixinzhang.mybatis.test;
 
 import org.apache.ibatis.session.SqlSession;
 import top.shixinzhang.mybatis.db.DataConnection;
+import top.shixinzhang.mybatis.objectfactory.MyObjectFactory;
 import top.shixinzhang.mybatis.po.DeveloperModel;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,15 +19,25 @@ public class Test {
     private static DataConnection dataConnection = new DataConnection();
 
     public static void main(String[] args) {
-//        testConnect();
+        testConnect();
 
 //        testFuzzySearch();
 
-        testInsert();
+//        testInsert();
 
 //        testDelete();
 
 //        testUpdate();
+
+//        testObjectFactory();
+    }
+
+    private static void testObjectFactory() {
+        MyObjectFactory myObjectFactory = new MyObjectFactory();
+
+        ArrayList<Class<?>> classes = new ArrayList<>();
+        myObjectFactory.create(DeveloperModel.class, classes, Collections.emptyList());
+
     }
 
     private static void testUpdate() {

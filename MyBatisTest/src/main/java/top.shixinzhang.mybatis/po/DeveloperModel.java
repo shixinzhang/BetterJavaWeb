@@ -54,4 +54,19 @@ public class DeveloperModel {
     public void setRegisterTime(Date registerTime) {
         this.registerTime = registerTime;
     }
+
+    public void print() {
+        System.out.println("print: " + this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "DeveloperModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", site='" + site + '\'' +
+                ", registerTime=" + registerTime +
+                '}';
+    }
 }
