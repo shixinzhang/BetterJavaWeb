@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--2.全局配置参数-->
+    <!--<settings>-->
+
+    <!--</settings>-->
+
+    <!--3.配置别名的几种方式 -->
+    <typeAliases>
+        <!--a.具体指定某个类的别名-->
+
+    </typeAliases>
+
+    <!--8.配置需要加载的 SQL 映射配置文件-->
+    <!--<mappers>-->
+        <!--使用 MyBatis 和 Spring 的整合包进行 Mapper 扫描，这里就不需要配置了-->
+        <!--但需要遵守  mapper.xml 与 mapper.java 同名且在一个目录下-->
+    <!--</mappers>-->
+
+</configuration>
