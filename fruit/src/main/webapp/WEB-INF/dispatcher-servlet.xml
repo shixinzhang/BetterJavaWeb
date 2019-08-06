@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--  此文件负责整个 MVC 的配置    -->
+
+    <!--对指定路径包下所有的 Java 类进行扫描，并把找到的 Java 类注册成 bean-->
+    <context:component-scan base-package="com.fruitsalesplatform.controller"/>
+
+    <!--      视图解析器，用于支持 Servlet JSP 路径解析     -->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--/WEB-INF/pages/   jsp    prefix   -->
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <!--suffix 为空，方便跟参数 url?id=xxx  -->
+        <property name="suffix" value=""/>
+    </bean>
+
+    <!--开启注解  使用 SpringMVC 提供的默认配置-->
+    <mvc:annotation-driven/>
+
+    <!--拦截器配置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.fruitsalesplatform.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--文件上传解析器-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--最大 10MB-->
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+</beans>
