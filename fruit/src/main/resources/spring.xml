@@ -39,7 +39,8 @@
         <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
 
         <!--扫描 mapper 配置文件的路径-->
-        <property name="mapperLocations" value="classpath:com/fruitsalesplatform/*/mapper/*.xml"/>
+<!--        <property name="mapperLocations" value="classpath:com/fruitsalesplatform/*/mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:*.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

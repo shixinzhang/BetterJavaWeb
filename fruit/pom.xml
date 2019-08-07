@@ -148,7 +148,12 @@
       <version>1.2</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency><!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <!--用于注解 @ResponseBody 时，实现 JSON 对象、集合类型之间的交互-->
@@ -181,6 +186,17 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.1</version>
     </dependency>
 
   </dependencies>

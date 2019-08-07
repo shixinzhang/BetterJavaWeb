@@ -55,6 +55,8 @@ public class TestDb {
 
     @Test
     public void testMapperInterface() throws Exception {
+        System.out.println(  this.getClass().getResource("UserMapper.xml"));
+        System.out.println(this.getClass().getResource("."));
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(resource);
         UserMapper userMapper = (UserMapper) context.getBean("userMapper");
         User user = userMapper.findUserByName("zsx");
