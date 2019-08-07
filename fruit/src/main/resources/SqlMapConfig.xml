@@ -13,7 +13,7 @@
     <!--3.配置别名的几种方式 -->
     <typeAliases>
         <!--a.具体指定某个类的别名-->
-        <package name="com.fruitsalesplatform.*.entity"/>
+        <package name="com.fruitsalesplatform.entity"/>
     </typeAliases>
 
     <!--8.配置需要加载的 SQL 映射配置文件-->

@@ -7,9 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.SQLException;
-import java.util.Properties;
-
 /**
  * Created by zhangshixin on 19/8/6.
  */
@@ -49,7 +46,7 @@ public class TestDb {
     @Test
     public void testSelect() {
         sqlSession = getSqlSession();
-        User user = sqlSession.selectOne("test.findUserByName", "zsx");
+        User user = sqlSession.selectOne("test.findUserByName", "shixinzhang");
         System.out.println("查询到的信息：" + user);
     }
 
@@ -59,7 +56,7 @@ public class TestDb {
         System.out.println(this.getClass().getResource("."));
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(resource);
         UserMapper userMapper = (UserMapper) context.getBean("userMapper");
-        User user = userMapper.findUserByName("zsx");
+        User user = userMapper.findUserByName("shixinzhang");
         System.out.println("查询到的信息：" + user);
     }
 }
