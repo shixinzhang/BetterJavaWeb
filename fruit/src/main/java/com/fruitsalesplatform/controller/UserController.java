@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Controller
 public class UserController extends BaseController{
-//    @Autowired
+    @Autowired
     private UserService userService;
 
     @GetMapping("/user/toLogin.action")
@@ -31,9 +31,8 @@ public class UserController extends BaseController{
 
     @PostMapping("/user/login.action")
     public String login(User user, Model model, HttpServletRequest request) {
-
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        UserService userService1 = (UserService) context.getBean("userService");
+//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+//        UserService userService1 = (UserService) context.getBean("userService");
 
         Map<String,String> map = new HashMap<>();
         map.put("username", user.getUsername());
