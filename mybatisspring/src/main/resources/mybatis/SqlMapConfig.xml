@@ -13,13 +13,15 @@
     <!--3.配置别名的几种方式 -->
     <typeAliases>
         <!--a.具体指定某个类的别名-->
-        <package name="com.fruitsalesplatform.*.entity"/>
+        <package name="com.zsx.sm.po"/>
     </typeAliases>
 
     <!--8.配置需要加载的 SQL 映射配置文件-->
-    <!--<mappers>-->
-        <!--使用 MyBatis 和 Spring 的整合包进行 Mapper 扫描，这里就不需要配置了-->
-        <!--但需要遵守  mapper.xml 与 mapper.java 同名且在一个目录下-->
-    <!--</mappers>-->
+    <mappers>
+        <!--通过 resource 方法依次加载一个映射文件-->
+        <mapper resource="sqlmap/UserMapper.xml"/>
+        <!--批量加载 该目录下的 Mapper 代理接口对象-->
+        <package name="com.zsx.sm.mapper"/>
+    </mappers>
 
 </configuration>

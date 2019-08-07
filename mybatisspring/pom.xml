@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>shixinzhang</groupId>
-  <artifactId>fruit</artifactId>
+  <artifactId>mybatis-spring</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>fruit Maven Webapp</name>
+  <name>mybatis-spring Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -24,8 +24,8 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
-      <scope>test</scope>
     </dependency>
+
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -186,7 +186,7 @@
   </dependencies>
 
   <build>
-    <finalName>fruit</finalName>
+    <finalName>mybatis-spring</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
@@ -200,10 +200,6 @@
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
-          </configuration>
           <version>3.8.0</version>
         </plugin>
         <plugin>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zsx.sm.mapper.UserQueryMapper">
+
+    <!--<select id="all" resultType="user">-->
+        <!--SELECT * FROM USER-->
+    <!--</select>-->
+
+    <select id="findUserById" parameterType="int"
+            resultType="user">
+        SELECT * FROM USER WHERE userid=#{id}
+    </select>
+
+    <select id="findUserByName" parameterType="java.lang.String"
+            resultType="user">
+        SELECT * FROM USER WHERE name LIKE '%${value}%'
+    </select>
+</mapper>

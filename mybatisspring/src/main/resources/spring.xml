@@ -16,8 +16,6 @@
     <!--加载用于数据库配置的属性文件-->
     <context:property-placeholder location="classpath:db.properties"/>
 
-    <context:component-scan base-package="com.fruitsalesplatform.dao,com.fruitsalesplatform.service"/>
-
     <!--配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
@@ -32,34 +30,24 @@
     </bean>
 
     <!--SessionFactory-->
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--整合 MyBatis，包扫描 Mapper 文件-->
-        <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
+        <property name="configLocation" value="mybatis/SqlMapConfig.xml"/>
 
-        <property name="mapperLocations" value="classpath:com/fruitsalesplatform/mapper/*.xml"/>
+        <!--&lt;!&ndash;扫描 mapper 配置文件的路径&ndash;&gt;-->
+        <!--<property name="mapperLocations" value="classpath:com/fruitsalesplatform/*/mapper/*.xml"/>-->
     </bean>
 
-    <!--事务管理-->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+    <!--UserDaoImpl 要获取 sqlSessionFactory 对象，还需要在这里添加依赖配置，这样需要的 sqlSessionFactory 才会被注入进去-->
+    <bean id="userDao" class="com.zsx.sm.dao.UserDaoImpl">
+        <property name="sqlSessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!--事务通知-->
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <tx:attributes>
-            <tx:method name="insert*" propagation="REQUIRED"/>
-            <tx:method name="update*" propagation="REQUIRED"/>
-            <tx:method name="delete*" propagation="REQUIRED"/>
-            <tx:method name="save*" propagation="REQUIRED"/>
-            <tx:method name="find*" read-only="false"/>
-            <tx:method name="get*" read-only="false"/>
-            <tx:method name="view*" read-only="false"/>
-        </tx:attributes>
-    </tx:advice>
+    <!--Spring 的 Mapper 扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定扫描的包名，如果有多个，用逗号分隔-->
+        <property name="basePackage" value="com.zsx.sm.mapper"/>
+    </bean>
 
-    <aop:config>
-        <aop:pointcut id="txPointcut" expression="execution(* com.fruitsalesplatform.service.*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
-    </aop:config>
 </beans>

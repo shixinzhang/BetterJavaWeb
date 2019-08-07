@@ -8,7 +8,7 @@
   <!--spring mvc config-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/beans.xml</param-value>
+    <param-value>classpath:spring.xml</param-value>
   </context-param>
 
   <!--在 web.xml 同级目录下，将有一个 dispatcher-servlet.xml 配置文件，负责整个 mvc 的配置-->
