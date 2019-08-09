@@ -42,11 +42,13 @@ public class UserController extends BaseController{
         if (users != null && users.size() > 0) {
             //找到了这个人，登录成功，到首页
             request.getSession().setAttribute("user", users.get(0));
+            request.getSession().setAttribute("tel", users.get(0).getTelephone());
             return "/home.jsp";
         }
 
         //带着错误信息回到登录页
         model.addAttribute("errorMsg", "登录失败！账号或密码错误！");
+        model.addAttribute("noticeMsg", "输入错误次数太多将导致封号！");
         return "/login.jsp";
     }
 }

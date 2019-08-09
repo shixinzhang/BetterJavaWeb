@@ -1,5 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ page isELIgnored="false"%>--%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
@@ -26,7 +28,7 @@
             <div id="form">
                 <h1>用户登录</h1>
                 <form action="login.action" method="post" id="myform" onsubmit="return validate()">
-                    用户名<input type="text" id="username" name="userName" style="width: 190px;height: 26px;margin-left: 39px"/>
+                    用户名<input type="text" id="username" name="username" style="width: 190px;height: 26px;margin-left: 39px"/>
                     <br/>
                     密码<input type="text" id="password" name="password" style="width: 190px;height: 26px;margin-top8px;margin-left: 54px"/>
                     <br/>
@@ -37,9 +39,17 @@
 
                 <%--显示错误信息--%>
 
-                <c:if test="${errorMsg!=null}"><font color="red">${errorMsg}</font> </c:if>
-                <c:if test="${]\!=null}"><font color="green">${noticeMsg}</font> </c:if>
+                <%--<span style="color:red">message:</span>--%>
 
+                <c:if test="${errorMsg!=null}">
+                    <span style="color:red">${errorMsg}</span>
+                </c:if>
+
+                <br/>
+
+                <c:if test="${noticeMsg!=null}">
+                    <span>${noticeMsg}</span>
+                </c:if>
 
             </div>
         </div>

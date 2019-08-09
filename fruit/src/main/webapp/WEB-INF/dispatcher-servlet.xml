@@ -18,7 +18,7 @@
     <!--      视图解析器，用于支持 Servlet JSP 路径解析     -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--/WEB-INF/pages/   jsp    prefix   -->
-        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="prefix" value="/WEB-INF/pages"/>
         <!--suffix 为空，方便跟参数 url?id=xxx  -->
         <property name="suffix" value=""/>
     </bean>
