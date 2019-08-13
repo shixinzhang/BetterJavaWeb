@@ -3,19 +3,33 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
-        <title>Home</title>
+        <title>主页</title>
+        <style type="text/css">
+            * {
+                margin:0;
+                padding:0;
+            }
+
+            #menuContent a{
+                text-decoration: none;
+                color: #ffffff;
+            }
+        </style>
     </head>
 
     <body>
-        Hello,
-        ${tel}, ${user},
 
-        <c:if test="${user!=null}">
-            ${user.username}<br/>
-            ${user.name}<br/>
-            ${user.userid}<br/>
-            ${user.password}<br/>
-            ${user.telephone}<br/>
-        </c:if>
+        <%@ include file="menu.jsp" %>
+
+        <%--Hello,--%>
+        <%--${tel}, ${user},--%>
+
+        <%--<c:if test="${user!=null}">--%>
+            <%--${user.username}<br/>--%>
+            <%--${user.name}<br/>--%>
+            <%--${user.userid}<br/>--%>
+            <%--${user.password}<br/>--%>
+            <%--${user.telephone}<br/>--%>
+        <%--</c:if>--%>
     </body>
 </html>
