@@ -22,7 +22,7 @@
 
     <!--sql 片段-->
     <sql id="query_retailer_where">
-        <if test="name != null"> AND NAME LIKE #{NAME }</if>
+        <if test="name != null"> AND NAME LIKE #{NAME}</if>
         <if test="address != null"> AND address LIKE #{address}</if>
         <if test="status != null"> AND status = #{status}</if>
         <if test="telephone != null"> AND telephone = #{telephone}</if>
@@ -30,7 +30,7 @@
     </sql>
 
     <!--参数是 map 的查询-->
-    <select id="find" parameterType="map" resultMap="retailerRM">
+    <select id="find" parameterType="java.util.HashMap" resultMap="retailerRM">
         SELECT * FROM RETAILER
         WHERE 1=1
         <!--引入 sql 片段-->
@@ -39,35 +39,41 @@
         <if test="startPage != null and pageSize != null">LIMIT #{startPage},#{pageSize}</if>
     </select>
 
-    <insert id="insert" parameterType="user">
-        INSERT INTO USER
-        (userid, username, password, name, telephone)
+    <select id="count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM RETAILER
+        WHERE 1=1
+        <include refid="query_retailer_where"></include>
+    </select>
+
+    <insert id="insert" parameterType="retailer">
+        INSERT INTO RETAILER
+        (retailerid, name, telephone, address, status, createtime)
         VALUES
         (
-          #{userid,jdbcType=VARCHAR},
-          #{username,jdbcType=VARCHAR},
-          #{password,jdbcType=VARCHAR},
+          #{retailerId,jdbcType=VARCHAR},
           #{name,jdbcType=VARCHAR},
-          #{telephone,jdbcType=VARCHAR}
+          #{telephone,jdbcType=VARCHAR},
+          #{address,jdbcType=VARCHAR},
+          #{createTime,jdbcType=VARCHAR}
         )
     </insert>
 
     <update id="update" parameterType="user">
-        UPDATE USER
+        UPDATE RETAILER
         <set>
-            <if test="password != null">password=#{password,jdbcType=VARCHAR}</if>
             <if test="name != null">name=#{name,jdbcType=VARCHAR}</if>
+            <if test="address != null">name=#{address,jdbcType=VARCHAR}</if>
             <if test="telephone != null">telephone=#{telephone,jdbcType=VARCHAR}</if>
         </set>
     </update>
 
     <delete id="deleteById" parameterType="string">
-        DELETE FROM USER
-        WHERE userid=#{userid}
+        DELETE FROM RETAILER
+        WHERE retailerid=#{retailerid}
     </delete>
 
     <select id="findUserByName" parameterType="java.lang.String"
-            resultType="com.fruitsalesplatform.entity.User">
-        SELECT * FROM USER WHERE name LIKE '%${value}%'
+            resultType="com.fruitsalesplatform.entity.Retailer">
+        SELECT * FROM RETAILER WHERE name LIKE '%${value}%'
     </select>
 </mapper>
