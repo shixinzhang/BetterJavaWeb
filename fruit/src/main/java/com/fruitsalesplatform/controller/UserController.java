@@ -77,4 +77,6 @@ public class UserController extends BaseController{
         model.addAttribute("noticeMsg", "注册成功，请输入账号密码登录");
         return "/login.jsp";
     }
+
+    
 }

@@ -47,4 +47,9 @@ public class RetailerServiceImpl implements RetailerService {
     public void delete(Serializable[] ids) {
         retailerDao.delete(ids);
     }
+
+    @Override
+    public int count(Map map) {
+        return retailerDao.count(map);
+    }
 }
