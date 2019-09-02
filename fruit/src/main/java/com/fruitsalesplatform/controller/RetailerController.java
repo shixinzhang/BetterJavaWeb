@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,12 +22,29 @@ public class RetailerController extends BaseController{
     @Autowired
     private RetailerService retailerService;
 
-    @GetMapping("/retailer/list.action")
+    @RequestMapping("/retailer/list.action")
     public String list(Model model, Retailer retailer) {
         Map<String, Object> map = retailerToMap(retailer);
         List<Retailer> retailers = retailerService.find(map);
 
         model.addAttribute("list", retailers);
+        //当前页数
+        model.addAttribute("currentPage", retailer.getCurrentPage());
+        //当前请求位置
+        model.addAttribute("startPage", retailer.getStartPage());
+
+        int countNumber = retailerService.count(map);
+        //数据总和
+        model.addAttribute("countNumber", countNumber);
+
+        int pageSize = retailer.getPageSize();
+        model.addAttribute("pageSize", pageSize);
+
+        //总页数
+        int sumPageNumber = countNumber % pageSize == 0
+                ? countNumber / pageSize
+                : countNumber / pageSize + 1;
+        model.addAttribute("sumPageNumber", sumPageNumber);
 
         return "/retailer/retailerHome.jsp";
     }
