@@ -1,13 +1,12 @@
 package com.fruitsalesplatform.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fruitsalesplatform.entity.Retailer;
 import com.fruitsalesplatform.service.RetailerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +20,28 @@ import java.util.Map;
 public class RetailerController extends BaseController{
     @Autowired
     private RetailerService retailerService;
+
+    @RequestMapping("/retailer/editRetailer.action")
+    @ResponseBody
+    public Retailer editRetailer(@RequestBody String json) {
+        String id = JSONObject.parseObject(json).getString("id");
+        //ResponseBody 将返回 json
+        return retailerService.get(id);
+    }
+
+    @RequestMapping("/retailer/edit.action")
+    public String edit(Model model, Retailer retailer) {
+        retailerService.update(retailer);
+
+        Retailer queryRetailer = new Retailer();
+        queryRetailer.setStartPage(retailer.getStartPage());
+        queryRetailer.setCurrentPage(retailer.getCurrentPage());
+        queryRetailer.setPageSize(retailer.getPageSize());
+        queryRetailer.setStatus(-1);
+
+        //回到  list 页面
+        return list(model, retailer);
+    }
 
     @RequestMapping("/retailer/list.action")
     public String list(Model model, Retailer retailer) {

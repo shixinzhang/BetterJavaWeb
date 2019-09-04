@@ -20,11 +20,86 @@
             text-decoration: none;
             color: #ffffff;
         }
+
+        .c {
+            border-style: solid;
+            width: 200px;
+            height: 130px;
+            /*margin: 4 23 0 23;*/
+            border-radius: 5px;
+            display: block;
+            background: #ffffff;
+            margin: 10% auto;
+        }
+
+        .mask {
+            width: 100%;
+            height:100%;
+            position: absolute;
+            background: rgba(0,0,0,.3);
+            display: none;
+        }
+
+        .title {
+            background-color: #173e65;height: 20px;
+            color: #ffffff;
+            font-size: 12px;
+            padding-left: 7px;
+        }
     </style>
+    <%--引入 jquery--%>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <%--使用 jquery--%>
     <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("button").click(function () {
+               $(this).hide();
+            });
+        });
+
+        /**
+         * 编辑零售商信息
+         * @param id
+         */
+        function editRetailer(id) {
+            var message = "{'id': '"+id+"'}";
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/retailer/editRetailer.action',
+                contentType: 'application/json;charset=utf-8',
+                data: message,
+                success:function(data) {
+                    //返回结果
+                    $("#editName").val(data["name"]);
+                    $("#editTelephone").val(data["telephone"]);
+                    $("#editAddress").val(data["address"]);
+                    $("#retailerId").val(data["retailerId"]);
+                    $("#editStatus").val(data["status"]);
+                    $("#eStatus").val(data["status"]);
+
+                    //显示弹出框
+                    $(".mask").css("display", "block");
+                    //引入分页信息到该 form 表单
+                    $("#eStartPage").val($("#startPage").val());
+                    $("#eCurrentPage").val($("#currentPage").val());
+                    $("#ePageSize").val($("#pageSize").val());
+                }
+            })
+        }
+
+        function cancelEdit() {
+            $(".mask").css("display","none");
+        }
+
         function changeStatus() {
             var value = document.getElementById("indexStatus").value;
-            document.getElementById("value").value = status;
+            document.getElementById("value").value = value;
+        }
+
+        function changeEditStatus() {
+            var value = document.getElementById("editStatus").value;
+            document.getElementById("eStatus").value = value;
         }
 
         //显示分页信息
@@ -110,6 +185,44 @@
 <%@ include file="../menu.jsp" %>
 <br>
 
+<%--修改信息的浮层--%>
+<div class="mask">
+    <div class="c">
+        <div class="title">
+            修改信息
+            <font style="float: right;padding-right: 10px" onclick="cancelEdit()">
+                x
+            </font>
+        </div>
+
+        <form action="/retailer/edit.action" method="post" id="editForm">
+            姓名：
+            <input type="text" id="editName" name="name" style="width: 120px"> <br>
+            手机：
+            <input type="text" id="editTelephone" name="telephone" style="width: 120px"><br>
+            地址：
+            <input type="text" id="editAddress" name="address" style="width: 120px"><br>
+            状态：
+            <select id="eStatus" onchange="changeEditStatus()">
+                <option value="-1" selected="selected">全部</option>
+                <option value="1">启用</option>
+                <option value="0">停用</option>
+            </select>
+            <br>
+
+            <input type="hidden" name="retailerId" id="retailerId">
+            <input type="hidden" name="status" id="editStatus">
+            <input type="hidden" name="startPage" id="eStartPage" value="${startPage}">
+            <input type="hidden" name="currentPage" id="eCurrentPage" value="${currentPage}">
+            <input type="hidden" name="pageSize" id="ePageSize" value="${pageSize}">
+
+            <input type="submit" value="提交" style="background-color: #173e65; color: #ffffff; width: 70px">
+
+            <%--显示错误信息--%>
+        </form>
+    </div>
+</div>
+
 <form action="/retailer/list.action" method="post" id="listForm">
     姓名：
     <input type="text" name="name" style="width: 120px">
@@ -118,7 +231,7 @@
     地址：
     <input type="text" name="address" style="width: 120px">
     状态：
-    <select>
+    <select onchange="changeStatus()">
         <option value="-1" selected="selected">全部</option>
         <option value="1">启用</option>
         <option value="0">停用</option>
@@ -180,7 +293,7 @@
                 <td>${item.createTime}</td>
 
                 <td>
-                    <a>编辑</a>|
+                    <a onclick="editRetailer('${item.retailerId}')">编辑</a>|
                     <a>删除</a>
                 </td>
             </tr>
