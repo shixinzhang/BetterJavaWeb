@@ -64,6 +64,7 @@ public class RetailerController extends BaseController{
 
         int pageSize = retailer.getPageSize();
         model.addAttribute("pageSize", pageSize);
+        model.addAttribute("listStatus", -1);
 
         //总页数
         int sumPageNumber = countNumber % pageSize == 0
@@ -88,7 +89,7 @@ public class RetailerController extends BaseController{
         }
         map.put("startPage", retailer.getStartPage());
         map.put("pageSize", retailer.getPageSize());
-        map.put("listStatus", -1);
+        map.put("status", retailer.getStatus());
 
         return map;
     }

@@ -24,7 +24,7 @@
     <sql id="query_retailer_where">
         <if test="name != null"> AND NAME LIKE #{NAME}</if>
         <if test="address != null"> AND address LIKE #{address}</if>
-        <if test="status != null"> AND status = #{status}</if>
+        <if test="status != -1"> AND status = #{status}</if>
         <if test="telephone != null"> AND telephone = #{telephone}</if>
         <if test="createTime != null"> AND createTime = DATE_FORMAT(#{address}, '%Y-%m-%d %H:%i:%s')</if>
     </sql>
@@ -67,7 +67,8 @@
         <set>
             <if test="name != null">name=#{name,jdbcType=VARCHAR},</if>
             <if test="address != null">address=#{address,jdbcType=VARCHAR},</if>
-            <if test="telephone != null">telephone=#{telephone,jdbcType=VARCHAR}</if>
+            <if test="telephone != null">telephone=#{telephone,jdbcType=VARCHAR},</if>
+            <if test="status != null">status=#{status,jdbcType=INTEGER}</if>
         </set>
         WHERE retailerid = #{retailerId}
     </update>

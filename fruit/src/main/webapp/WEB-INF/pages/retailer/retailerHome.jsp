@@ -95,13 +95,13 @@
 
         function changeStatus() {
             var value = document.getElementById("indexStatus").value;
-            alert(value)
+//            alert(value)
             document.getElementById("listStatus").value = value;
         }
 
         function changeEditStatus() {
             var value = document.getElementById("eStatus").value;
-            alert(value);
+//            alert(value);
             document.getElementById("editStatus").value = value;
         }
 
@@ -253,7 +253,7 @@
     <input type="hidden" name="startPage" id="startPage" value="${startPage}">
     <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}">
     <input type="hidden" name="pageSize" id="pageSize" value="${pageSize}">
-    <input type="hidden" name="status" id="listStatus" value=-1>
+    <input type="hidden" name="status" id="listStatus" value=${listStatus}>
     <input type="hidden" name="sumPageNumber" id="sumPageNumber" value="${sumPageNumber}">
     <input type="hidden" name="countNumber" id="countNumber" value="${countNumber}">
 </form>
