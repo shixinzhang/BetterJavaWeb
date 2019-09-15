@@ -44,7 +44,7 @@ public class RetailerController extends BaseController{
         queryRetailer.setStatus(-1);
 
         //回到  list 页面
-        return list(model, retailer);
+        return list(model, queryRetailer);
     }
 
     @RequestMapping("/retailer/list.action")
