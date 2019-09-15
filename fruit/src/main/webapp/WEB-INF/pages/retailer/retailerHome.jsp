@@ -89,6 +89,25 @@
             })
         }
 
+        /**
+         * 删除零售商信息
+         * @param id
+         */
+        function deleteRetailer(id) {
+//            alert("id: " + id);
+
+            var message = "{'id':'" + id + "'}";
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/retailer/delete.action',
+                contentType: 'application/json;charset=utf-8',
+                data: message,
+                success:function (data) {
+                    alert("delete success")
+                }
+            })
+        }
+
         function cancelEdit() {
             $(".mask").css("display","none");
         }
@@ -298,7 +317,7 @@
 
                 <td>
                     <a onclick="editRetailer('${item.retailerId}')">编辑</a>|
-                    <a>删除</a>
+                    <a onclick="deleteRetailer('${item.retailerId}')">删除</a>
                 </td>
             </tr>
         </c:forEach>

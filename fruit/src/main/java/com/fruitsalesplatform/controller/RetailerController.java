@@ -6,6 +6,7 @@ import com.fruitsalesplatform.service.RetailerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.support.BindingAwareModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -30,21 +31,21 @@ public class RetailerController extends BaseController{
         return retailerService.get(id);
     }
 
-    @RequestMapping("/retailer/edit.action")
+    @RequestMapping("/retailer/delete.action")
+//    @ResponseBody
+    public void delete(@RequestBody String json) {
+        Long id = JSONObject.parseObject(json).getLong("id");
+        retailerService.deleteById(id);
+    }
+
+    @PostMapping("/retailer/edit.action")
     public String edit(Model model, Retailer retailer) {
         org.apache.log4j.Logger.getLogger("zsx").info("retailer info: " + retailer);
 
         retailerService.update(retailer);
 
-
-        Retailer queryRetailer = new Retailer();
-        queryRetailer.setStartPage(retailer.getStartPage());
-        queryRetailer.setCurrentPage(retailer.getCurrentPage());
-        queryRetailer.setPageSize(retailer.getPageSize());
-        queryRetailer.setStatus(-1);
-
         //回到  list 页面
-        return list(model, queryRetailer);
+        return list(model, currentPageQueryInfo(retailer));
     }
 
     @RequestMapping("/retailer/list.action")
@@ -52,6 +53,9 @@ public class RetailerController extends BaseController{
         Map<String, Object> map = retailerToMap(retailer);
         List<Retailer> retailers = retailerService.find(map);
 
+        if (model == null) {
+            model = new BindingAwareModelMap();
+        }
         model.addAttribute("list", retailers);
         //当前页数
         model.addAttribute("currentPage", retailer.getCurrentPage());
@@ -99,5 +103,19 @@ public class RetailerController extends BaseController{
                 param.equals("") ? null : ("%" + param + "%");
     }
 
+    /**
+     * 复制当前传入的页面信息，去掉影响查询的属性
+     * @param retailer
+     * @return
+     */
+    private Retailer currentPageQueryInfo(Retailer retailer) {
+
+        Retailer queryRetailer = new Retailer();
+        queryRetailer.setStartPage(retailer.getStartPage());
+        queryRetailer.setCurrentPage(retailer.getCurrentPage());
+        queryRetailer.setPageSize(retailer.getPageSize());
+        queryRetailer.setStatus(-1);
+        return queryRetailer;
+    }
 
 }

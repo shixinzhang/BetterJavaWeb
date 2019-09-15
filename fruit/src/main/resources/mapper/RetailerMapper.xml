@@ -73,9 +73,9 @@
         WHERE retailerid = #{retailerId}
     </update>
 
-    <delete id="deleteById" parameterType="string">
+    <delete id="deleteById" parameterType="long">
         DELETE FROM RETAILER
-        WHERE retailerid=#{retailerid}
+        WHERE retailerid= #{value}
     </delete>
 
     <select id="findUserByName" parameterType="java.lang.String"
