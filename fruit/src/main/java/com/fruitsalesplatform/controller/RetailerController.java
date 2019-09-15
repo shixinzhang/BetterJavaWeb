@@ -88,6 +88,7 @@ public class RetailerController extends BaseController{
         }
         map.put("startPage", retailer.getStartPage());
         map.put("pageSize", retailer.getPageSize());
+        map.put("listStatus", -1);
 
         return map;
     }

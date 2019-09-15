@@ -5,7 +5,7 @@ package com.fruitsalesplatform.entity;
  * Created by zhangshixin on 19/8/13.
  */
 public class Retailer extends PageEntity {
-    String retailerId;
+    long retailerId;
     String name;
     String telephone;
     String address;
@@ -16,11 +16,11 @@ public class Retailer extends PageEntity {
      */
     int status;
 
-    public String getRetailerId() {
+    public long getRetailerId() {
         return retailerId;
     }
 
-    public void setRetailerId(String retailerId) {
+    public void setRetailerId(long retailerId) {
         this.retailerId = retailerId;
     }
 

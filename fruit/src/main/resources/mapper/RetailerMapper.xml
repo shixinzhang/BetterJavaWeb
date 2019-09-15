@@ -7,7 +7,7 @@
     
     <!--resultMap 映射-->
     <resultMap id="retailerRM" type="com.fruitsalesplatform.entity.Retailer">
-        <id property="retailerId" column="retailerid" jdbcType="VARCHAR"></id>
+        <id property="retailerId" column="retailerid" jdbcType="BIGINT"></id>
         <result property="name" column="name"/>
         <result property="telephone" column="telephone"/>
         <result property="address" column="address"/>
@@ -35,8 +35,12 @@
         WHERE 1=1
         <!--引入 sql 片段-->
         <include refid="query_retailer_where"></include>
+
+        ORDER BY retailerId
+
         <!--分页 LIMIT -->
         <if test="startPage != null and pageSize != null">LIMIT #{startPage},#{pageSize}</if>
+
     </select>
 
     <select id="count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
@@ -50,7 +54,7 @@
         (retailerid, name, telephone, address, status, createtime)
         VALUES
         (
-          #{retailerId,jdbcType=VARCHAR},
+          #{retailerId,jdbcType=BIGINT},
           #{name,jdbcType=VARCHAR},
           #{telephone,jdbcType=VARCHAR},
           #{address,jdbcType=VARCHAR},
@@ -65,6 +69,7 @@
             <if test="address != null">address=#{address,jdbcType=VARCHAR},</if>
             <if test="telephone != null">telephone=#{telephone,jdbcType=VARCHAR}</if>
         </set>
+        WHERE retailerid = #{retailerId}
     </update>
 
     <delete id="deleteById" parameterType="string">

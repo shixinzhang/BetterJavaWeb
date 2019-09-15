@@ -207,9 +207,9 @@
             <input type="text" id="editAddress" name="address" style="width: 120px"><br>
             状态：
             <select id="eStatus" onchange="changeEditStatus()">
-                <option value="-1" selected="selected">全部</option>
-                <option value="1">启用</option>
-                <option value="0">停用</option>
+                <option value=-1 selected="selected">全部</option>
+                <option value=1>启用</option>
+                <option value=0>停用</option>
             </select>
             <br>
 
@@ -235,9 +235,9 @@
     <input type="text" name="address" style="width: 120px">
     状态：
     <select id="indexStatus" onchange="changeStatus()">
-        <option value="-1" selected="selected">全部</option>
-        <option value="1">启用</option>
-        <option value="0">停用</option>
+        <option value=-1 selected="selected">全部</option>
+        <option value=1>启用</option>
+        <option value=0>停用</option>
     </select>
     创建日期：
     <input type="datetime" name="createTime">
@@ -253,7 +253,7 @@
     <input type="hidden" name="startPage" id="startPage" value="${startPage}">
     <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}">
     <input type="hidden" name="pageSize" id="pageSize" value="${pageSize}">
-    <input type="hidden" name="status" id="listStatus">
+    <input type="hidden" name="status" id="listStatus" value=-1>
     <input type="hidden" name="sumPageNumber" id="sumPageNumber" value="${sumPageNumber}">
     <input type="hidden" name="countNumber" id="countNumber" value="${countNumber}">
 </form>
@@ -290,7 +290,7 @@
                         <span style="color: blue">启用</span>
                     </c:if>
                     <c:if test="${item.status==0}">
-                        <span style="color: yellow">停用</span>
+                        <span style="color: red">停用</span>
                     </c:if>
                 </td>
 
