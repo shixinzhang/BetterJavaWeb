@@ -63,4 +63,16 @@ public class Retailer extends PageEntity {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Retailer{" +
+                "retailerId='" + retailerId + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

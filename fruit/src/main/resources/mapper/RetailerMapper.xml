@@ -58,11 +58,11 @@
         )
     </insert>
 
-    <update id="update" parameterType="user">
+    <update id="update" parameterType="com.fruitsalesplatform.entity.Retailer">
         UPDATE RETAILER
         <set>
-            <if test="name != null">name=#{name,jdbcType=VARCHAR}</if>
-            <if test="address != null">address=#{address,jdbcType=VARCHAR}</if>
+            <if test="name != null">name=#{name,jdbcType=VARCHAR},</if>
+            <if test="address != null">address=#{address,jdbcType=VARCHAR},</if>
             <if test="telephone != null">telephone=#{telephone,jdbcType=VARCHAR}</if>
         </set>
     </update>

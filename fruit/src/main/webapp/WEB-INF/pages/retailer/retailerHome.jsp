@@ -80,6 +80,7 @@
 
                     //显示弹出框
                     $(".mask").css("display", "block");
+
                     //引入分页信息到该 form 表单
                     $("#eStartPage").val($("#startPage").val());
                     $("#eCurrentPage").val($("#currentPage").val());
@@ -94,12 +95,14 @@
 
         function changeStatus() {
             var value = document.getElementById("indexStatus").value;
-            document.getElementById("value").value = value;
+            alert(value)
+            document.getElementById("listStatus").value = value;
         }
 
         function changeEditStatus() {
-            var value = document.getElementById("editStatus").value;
-            document.getElementById("eStatus").value = value;
+            var value = document.getElementById("eStatus").value;
+            alert(value);
+            document.getElementById("editStatus").value = value;
         }
 
         //显示分页信息
@@ -231,7 +234,7 @@
     地址：
     <input type="text" name="address" style="width: 120px">
     状态：
-    <select onchange="changeStatus()">
+    <select id="indexStatus" onchange="changeStatus()">
         <option value="-1" selected="selected">全部</option>
         <option value="1">启用</option>
         <option value="0">停用</option>
@@ -250,6 +253,7 @@
     <input type="hidden" name="startPage" id="startPage" value="${startPage}">
     <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}">
     <input type="hidden" name="pageSize" id="pageSize" value="${pageSize}">
+    <input type="hidden" name="status" id="listStatus">
     <input type="hidden" name="sumPageNumber" id="sumPageNumber" value="${sumPageNumber}">
     <input type="hidden" name="countNumber" id="countNumber" value="${countNumber}">
 </form>

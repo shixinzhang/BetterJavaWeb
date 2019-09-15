@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * 零售商控制器，处理：列表请求、
@@ -31,7 +32,10 @@ public class RetailerController extends BaseController{
 
     @RequestMapping("/retailer/edit.action")
     public String edit(Model model, Retailer retailer) {
+        org.apache.log4j.Logger.getLogger("zsx").info("retailer info: " + retailer);
+
         retailerService.update(retailer);
+
 
         Retailer queryRetailer = new Retailer();
         queryRetailer.setStartPage(retailer.getStartPage());
